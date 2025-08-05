@@ -1,0 +1,11 @@
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+python-dotenv==1.0.0
+FlagEmbedding==1.2.10
+transformers>=4.33.0
+numpy>=1.21.0
+scikit-learn>=1.0.0
+sentence-transformers>=2.2.0
+# Note: torch is intentionally omitted - install manually with CUDA support
+# Example: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
