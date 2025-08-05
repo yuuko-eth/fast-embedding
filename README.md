@@ -204,21 +204,16 @@ Error responses include detailed error messages in the response body.
 
 ## Docker Support
 
-You can also containerize this application. Here's a sample Dockerfile:
+### 1. Building the image
 
-```dockerfile
-FROM nvidia/cuda:11.8-runtime-ubuntu22.04
+```bash
+docker build -t fast-embedding-server .
+```
 
-WORKDIR /app
+### 2. Run the image
 
-# Install Python and dependencies
-RUN apt-get update && apt-get install -y python3 python3-pip
-COPY requirements.txt .
-RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-RUN pip3 install -r requirements.txt
+Make sure to supply `--gpus all` or numerical index to assign compute device:
 
-COPY . .
-
-EXPOSE 8000
-CMD ["python3", "main.py"]
+```bash
+docker run --gpus=all -d --restart=always fast-embedding-server
 ```
