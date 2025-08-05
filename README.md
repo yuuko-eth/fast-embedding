@@ -1,6 +1,6 @@
-# FlagEmbedding FastAPI Server
+# fast-embedding
 
-A FastAPI server that wraps FlagEmbedding for both single and batch text embedding inference.
+FastEmbedding: A FastAPI server that wraps FlagEmbedding for both single and batch text embedding inference.
 
 ## Features
 
@@ -8,31 +8,44 @@ A FastAPI server that wraps FlagEmbedding for both single and batch text embeddi
 - Batch text embedding endpoint
 - Configurable model via environment variables
 - Health check and model info endpoints
-- CUDA support with manual PyTorch installation
+- CUDA support with manual PyTorch installation or compute backend of your choice
 - Request/response validation with Pydantic
 - Comprehensive error handling and logging
 
 ## Setup
 
-### 1. Install PyTorch with CUDA Support (First!)
+### 1. Install Dependencies
+
+Using pip:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Using uv (automatically creates venv at `.venv`):
+
+```bash
+uv sync
+```
+
+### 2. Install PyTorch with CUDA Support
 
 Since PyTorch installation depends on your CUDA version, install it manually first:
 
 ```bash
+# Activate venv first
+python3 -m venv .venv
+
 # For CUDA 11.8
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
-# For CUDA 12.1
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+# For CUDA 12.6
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
 
 # For CPU only
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-```
-
-### 2. Install Dependencies
-
-```bash
-pip install -r requirements.txt
 ```
 
 ### 3. Configure Environment
