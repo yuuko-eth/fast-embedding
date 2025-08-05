@@ -13,3 +13,4 @@ wheels/
 .env.example
 
 uv.lock
+.python-version
