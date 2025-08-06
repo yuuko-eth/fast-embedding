@@ -52,7 +52,7 @@ async def lifespan(app: FastAPI):
         # Initialize the model
         model = BGEM3FlagModel(
             model_name_or_path=model_id,
-            use_fp16=True,  # Use half precision for better performance
+            # use_fp16=True,  # Use half precision for better performance
             device="cuda" if os.getenv("CUDA_AVAILABLE", "true").lower() == "true" else "cpu"
         )
         
