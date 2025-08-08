@@ -1,5 +1,5 @@
 # Multi-stage build for size optimization
-FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as builder
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 AS builder
 
 # Set working directory
 WORKDIR /app
