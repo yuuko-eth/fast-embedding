@@ -7,7 +7,6 @@
 README.md
 *.md
 docs/
-*.txt
 
 # Development files
 .env
