@@ -52,16 +52,19 @@ async def lifespan(app: FastAPI):
         # Initialize the model
         model = BGEM3FlagModel(
             model_name_or_path=model_id,
-            # use_fp16=True,  # Use half precision for better performance
+            use_fp16=False,  # Use half precision for better performance
             device="cuda" if os.getenv("CUDA_AVAILABLE", "true").lower() == "true" else "cpu"
         )
         
         logger.info(f"Model {model_id} loaded successfully")
+        for param in model.model.parameters():
+            print(param.dtype)
+            break
         
     except Exception as e:
         logger.error(f"Failed to load model: {str(e)}")
         raise e
-    
+
     yield
     
     # Shutdown
